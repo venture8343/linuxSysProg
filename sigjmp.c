@@ -1,10 +1,9 @@
-/* The sigsetjmp() function saves the current stack environment and, 
-   optionally, the current signal mask. The stack environment and 
-   signal mask saved by sigsetjmp() can subsequently be restored by siglongjmp().
-
-   sigsetjmp() is similar to setjmp(), except for the optional capability of
-   saving the signal mask. Like setjmp() and longjmp(), the sigsetjmp() and
-   siglongjmp() functions provide a way to perform a nonlocal "goto."
+/* 
+   이 예제는 sigsetjmp()와 siglongjmp()를 테스트하기 위한 예제 입니다.
+   sigsetjmp()함수는 현재 스택 환경변수(stack enviroment)와 현재 시그널
+   마스크 값을 저장한다. sigsetjmp()로 저장된 값은 siglongjmp()로 불러올
+   수 있다. sigsetjmp()는 시그널 마스크 값을 추가적으로 저장하는 것 빼고는
+   setjmp()와 동일하다.
 */
 
 #include <setjmp.h>
@@ -35,5 +34,6 @@ int main(void)  {
       fprintf(stderr, "Returned to main loop due to ^c\n");
    jumpok = 1;
    printf("test\n");
+
    for ( ; ; );          /* main loop goes here */
 }
